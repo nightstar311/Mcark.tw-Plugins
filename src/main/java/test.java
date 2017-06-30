@@ -78,7 +78,10 @@ public class test implements CommandExecutor {
                         if (handItem.get(Keys.DISPLAY_NAME).isPresent()) {
                             if (handItem.get(Keys.DISPLAY_NAME).get().toPlain().equals("超強神劍")) {
                                 event.setBaseDamage(500);
-                                player.sendMessage(Text.of("造成500點傷害!"));
+                                
+                                Text text = Text.of("造成500點傷害!");
+                                Title title = Title.builder().actionBar(text).build();
+                                player.sendTitle(title);
                             }
                         }
                     }
@@ -103,8 +106,11 @@ public class test implements CommandExecutor {
                                 if (handItem.get(Keys.DISPLAY_NAME).get().toPlain().equals("尖刺盾")) {
                                     if (  Instant.now().isBefore(  blockingInstant.get(defender).plusSeconds(1)   )) {
                                         attacker.damage(1000, DamageSource.builder().type(DamageTypes.ATTACK).build());
-                                        defender.sendMessage(Text.of("防禦成功!"));
+                                        
                                         event.setCancelled(true);
+                                        Text text = Text.of("防禦成功!");
+                                        Title title = Title.builder().actionBar(text).build();
+                                        defender.sendTitle(title);
                                     }
                                 }
                             }
@@ -132,7 +138,9 @@ public class test implements CommandExecutor {
                                 if (handItem.get(Keys.DISPLAY_NAME).get().toPlain().equals("尖刺盾")) {
                                     if (  Instant.now().isBefore(  blockingInstant.get(defender).plusSeconds(1)   )) {
                                         attacker.damage(1000, DamageSource.builder().type(DamageTypes.ATTACK).build());
-                                        defender.sendMessage(Text.of("防禦成功!"));
+                                        Text text = Text.of("防禦成功!");
+                                        Title title = Title.builder().actionBar(text).build();
+                                        defender.sendTitle(title);
                                         event.setCancelled(true);
                                     }
                                 }
